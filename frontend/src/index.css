@@ -1,7 +1,6 @@
 /* ============================================================
-   Taskify — Premium Design System
-   A polished dark-first UI with glassmorphism, micro-animations,
-   and refined typography.
+   Taskify – main stylesheet
+   Dark/light theme tokens, layout, components
    ============================================================ */
 
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@400;500;600;700;800&display=swap');

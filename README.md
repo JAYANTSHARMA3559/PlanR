@@ -2,8 +2,7 @@
 
 A full-stack task management app with analytics dashboard, built with **React**, **Node.js + Express**, and **MongoDB**.
 
-> **Live Demo**: [https://taskify-app.vercel.app](https://taskify-app.vercel.app)  
-> *(Update this link after deployment)*
+> **Live Demo**: _Add your deployed link here after hosting_
 
 ---
 
@@ -18,7 +17,7 @@ A full-stack task management app with analytics dashboard, built with **React**,
 - 📊 Analytics dashboard — stats cards + Donut & Bar charts
 - 🌙 Dark / Light mode (persisted)
 - 📱 Fully responsive design
-- ✨ Premium glassmorphism UI with Lucide SVG icons
+- ✨ Glassmorphism UI with Lucide SVG icons
 
 ---
 
@@ -136,25 +135,23 @@ All task routes require `Authorization: Bearer <token>` header.
 ## Design Decisions
 
 ### Backend
-- **JWT in Authorization header** — stateless auth, no cookie complexities
-- **Compound MongoDB indexes** on `(user, status)`, `(user, priority)`, `(user, dueDate)` — ensures per-user queries scale with large datasets
-- **Global error middleware** — unified error responses; Mongoose errors (duplicate key, cast, validation) all handled centrally
-- **`.env` config** — no secrets hardcoded; `.env.example` provided for easy onboarding
-- **`protect` middleware** — extracts + verifies JWT, attaches user to `req.user` for all downstream controllers
-- **Environment-aware CORS** — `FRONTEND_URL` env var allows deployed frontend URL to be whitelisted
+- Auth uses **JWT in the `Authorization` header**. Stateless, simple. No cookie/session headaches.
+- I added **compound indexes** on `(user, status)`, `(user, priority)`, and `(user, dueDate)` so that filtered queries stay fast even with thousands of tasks per user.
+- There's a **global error middleware** that catches Mongoose-specific errors (duplicate key, validation, bad ObjectId) and maps them to proper HTTP status codes. This keeps the controllers clean — they just `next(err)` and move on.
+- All config lives in `.env`. The `.env.example` file is included so anyone cloning the repo knows what to set up.
+- The `protect` middleware verifies the JWT and attaches `req.user`, so every route handler downstream can just use it directly.
+- CORS is configured to accept `FRONTEND_URL` from the environment, which makes deployment straightforward.
 
 ### Frontend
-- **Vite + React 18** — fast HMR for development, optimized production builds
-- **Glassmorphism UI** — frosted glass cards with `backdrop-filter: blur()` for a modern, premium aesthetic
-- **Lucide React icons** — tree-shakeable SVG icons replace emojis for a professional, crisp look
-- **Outfit + Inter fonts** — display font for headings, Inter for body text
-- **Micro-animations** — staggered card entrances, shimmer progress bars, spring-physics hover effects
-- **CSS Custom Properties** — dark/light theme switch with zero JS, just a `data-theme` attribute on `<html>`
-- **Recharts** — donut (status) and bar (priority) charts in analytics dashboard
-- **Debounced search** — 350ms debounce on search input avoids API spam
-- **Optimistic UI for toggle-done** — immediate local state update for snappy UX
-- **Axios interceptors** — token injection + global 401 handler (auto-redirect to login)
-- **Context + localStorage** — auth state and theme preference persist across refreshes
+- **Vite + React 18** for fast dev reloads and small production bundles.
+- The UI uses `backdrop-filter: blur()` on cards and sidebars for a frosted glass look. I went with **Lucide React** for icons since they're tree-shakeable and look way cleaner than emojis.
+- Typography is **Outfit** for headings and **Inter** for body text — both from Google Fonts.
+- Theme switching (dark/light) is done entirely via **CSS custom properties** and a `data-theme` attribute on `<html>`. No JS re-renders needed.
+- Charts use **Recharts** — it's lightweight and composable, works well for the donut + bar charts on the dashboard.
+- Search input has a **350ms debounce** so it doesn't fire an API call on every keystroke.
+- Marking a task as done uses **optimistic UI** — the local state updates instantly, no spinner or refetch needed.
+- **Axios interceptors** handle two things: injecting the auth token into every request, and catching 401s globally to redirect to login.
+- Auth state and theme preference are stored in **localStorage** so they survive page refreshes.
 
 ---
 
