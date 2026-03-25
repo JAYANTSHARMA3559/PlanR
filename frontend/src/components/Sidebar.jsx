@@ -27,7 +27,7 @@ export default function Sidebar({ theme, onThemeToggle }) {
             {/* Mobile topbar */}
             <div className="topbar">
                 <button className="btn-icon" onClick={() => setMobileOpen(!mobileOpen)}>☰</button>
-                <span className="topbar-logo">Taskify</span>
+                <span className="topbar-logo">PlanR</span>
                 <button className="theme-toggle" onClick={onThemeToggle} title="Toggle theme">
                     {theme === 'dark' ? <Sun size={16} /> : <Moon size={16} />}
                 </button>
@@ -43,7 +43,7 @@ export default function Sidebar({ theme, onThemeToggle }) {
 
             <aside className={`sidebar${mobileOpen ? ' open' : ''}`}>
                 <div className="sidebar-logo">
-                    <h1>Taskify</h1>
+                    <h1>PlanR</h1>
                     <span>Task Management System</span>
                 </div>
 

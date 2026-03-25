@@ -1,4 +1,4 @@
-# Taskify — Task Management System
+# PlanR — Task Management System
 
 A full-stack task management app with analytics dashboard, built with **React**, **Node.js + Express**, and **MongoDB**.
 
@@ -81,7 +81,7 @@ npm run dev               # Runs on http://localhost:5000
 | Variable | Description | Default |
 |----------|-------------|---------|
 | `PORT` | Server port | `5000` |
-| `MONGO_URI` | MongoDB connection string | `mongodb://localhost:27017/taskify` |
+| `MONGO_URI` | MongoDB connection string | `mongodb://localhost:27017/planr` |
 | `JWT_SECRET` | Secret key for JWT signing | *(required)* |
 | `JWT_EXPIRES_IN` | Token expiry duration | `7d` |
 | `NODE_ENV` | Environment mode | `development` |
@@ -166,7 +166,7 @@ All task routes require `Authorization: Bearer <token>` header.
    - **Build Command**: `npm install`
    - **Start Command**: `npm start`
 4. Add environment variables: `MONGO_URI`, `JWT_SECRET`, `JWT_EXPIRES_IN`, `NODE_ENV=production`, `FRONTEND_URL`
-5. Deploy — note the URL (e.g. `https://taskify-api.onrender.com`)
+5. Deploy — note the URL (e.g. `https://planr-api.onrender.com`)
 
 ### Database → MongoDB Atlas (Free)
 
@@ -186,4 +186,4 @@ All task routes require `Authorization: Bearer <token>` header.
 ## Local Development Notes
 
 - Vite dev server proxies `/api/*` → `http://localhost:5000` (configured in `vite.config.js`), so no CORS issues during local development
-- Default MongoDB DB name is `taskify` (configurable via `MONGO_URI` in `.env`)
+- Default MongoDB DB name is `planr` (configurable via `MONGO_URI` in `.env`)

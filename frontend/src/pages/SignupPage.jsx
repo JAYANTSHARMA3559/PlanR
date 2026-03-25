@@ -53,7 +53,7 @@ export default function SignupPage() {
         <div className="auth-page">
             <div className="auth-card">
                 <div className="auth-logo">
-                    <h1>Taskify</h1>
+                    <h1>PlanR</h1>
                     <p>Create your account</p>
                 </div>
 

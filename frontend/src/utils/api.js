@@ -7,7 +7,7 @@ const api = axios.create({
 
 // attach token to every request
 api.interceptors.request.use((config) => {
-    const token = localStorage.getItem('taskify_token')
+    const token = localStorage.getItem('planr_token')
     if (token) {
         config.headers.Authorization = `Bearer ${token}`
     }
@@ -19,8 +19,8 @@ api.interceptors.response.use(
     (res) => res,
     (err) => {
         if (err.response?.status === 401) {
-            localStorage.removeItem('taskify_token')
-            localStorage.removeItem('taskify_user')
+            localStorage.removeItem('planr_token')
+            localStorage.removeItem('planr_user')
             window.location.href = '/login'
         }
         return Promise.reject(err)

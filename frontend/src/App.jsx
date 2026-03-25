@@ -30,11 +30,11 @@ function AppInner() {
     const { isAuthenticated } = useAuth()
 
     // persist theme preference
-    const [theme, setTheme] = useState(() => localStorage.getItem('taskify_theme') || 'dark')
+    const [theme, setTheme] = useState(() => localStorage.getItem('planr_theme') || 'dark')
 
     useEffect(() => {
         document.documentElement.setAttribute('data-theme', theme)
-        localStorage.setItem('taskify_theme', theme)
+        localStorage.setItem('planr_theme', theme)
     }, [theme])
 
     const toggleTheme = () => setTheme((t) => (t === 'dark' ? 'light' : 'dark'))

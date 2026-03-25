@@ -1,7 +1,7 @@
 {
-  "name": "taskify-backend",
+  "name": "planr-backend",
   "version": "1.0.0",
-  "description": "REST API for Taskify - Task Management System",
+  "description": "REST API for PlanR - Task Management System",
   "main": "src/server.js",
   "scripts": {
     "start": "node src/server.js",

@@ -6,7 +6,7 @@ const PORT = process.env.PORT || 5000;
 
 connectDB().then(() => {
     app.listen(PORT, () => {
-        console.log(`\nTaskify API running on http://localhost:${PORT}`);
+        console.log(`\nPlanR API running on http://localhost:${PORT}`);
         console.log(`Environment: ${process.env.NODE_ENV || 'development'}\n`);
     });
 });

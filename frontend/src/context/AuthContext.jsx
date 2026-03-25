@@ -5,21 +5,21 @@ const AuthContext = createContext(null)
 export const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(() => {
         try {
-            return JSON.parse(localStorage.getItem('taskify_user')) || null
+            return JSON.parse(localStorage.getItem('planr_user')) || null
         } catch {
             return null
         }
     })
 
     const login = (token, userData) => {
-        localStorage.setItem('taskify_token', token)
-        localStorage.setItem('taskify_user', JSON.stringify(userData))
+        localStorage.setItem('planr_token', token)
+        localStorage.setItem('planr_user', JSON.stringify(userData))
         setUser(userData)
     }
 
     const logout = useCallback(() => {
-        localStorage.removeItem('taskify_token')
-        localStorage.removeItem('taskify_user')
+        localStorage.removeItem('planr_token')
+        localStorage.removeItem('planr_user')
         setUser(null)
     }, [])
 
