@@ -2,7 +2,7 @@
 
 A full-stack task management app with analytics dashboard, built with **React**, **Node.js + Express**, and **MongoDB**.
 
-> **Live Demo**: _Add your deployed link here after hosting_
+> **Live Demo**: [https://planr-api.onrender.com](https://planr-api.onrender.com)
 
 ---
 
