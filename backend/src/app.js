@@ -2,6 +2,7 @@ const express = require('express');
 const cors = require('cors');
 const helmet = require('helmet');
 const morgan = require('morgan');
+const path = require('path');
 
 const authRoutes = require('./routes/auth');
 const taskRoutes = require('./routes/tasks');
@@ -44,10 +45,21 @@ app.get('/api/health', (req, res) => {
 app.use('/api/auth', authRoutes);
 app.use('/api/tasks', taskRoutes);
 
-// 404 handler
-app.use((req, res) => {
-    res.status(404).json({ success: false, message: `Route ${req.originalUrl} not found` });
-});
+// Serve frontend in production
+if (process.env.NODE_ENV === 'production') {
+    const frontendDist = path.join(__dirname, '..', '..', 'frontend', 'dist');
+    app.use(express.static(frontendDist));
+
+    // SPA fallback — any non-API route gets index.html
+    app.get('*', (req, res) => {
+        res.sendFile(path.join(frontendDist, 'index.html'));
+    });
+} else {
+    // 404 handler (dev only, frontend runs separately)
+    app.use((req, res) => {
+        res.status(404).json({ success: false, message: `Route ${req.originalUrl} not found` });
+    });
+}
 
 // Global error handler (must be last)
 app.use(errorHandler);

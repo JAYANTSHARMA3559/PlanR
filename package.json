@@ -1,0 +1,11 @@
+{
+  "name": "planr",
+  "version": "1.0.0",
+  "description": "PlanR - Full-stack Task Management System",
+  "scripts": {
+    "install:all": "cd backend && npm install && cd ../frontend && npm install",
+    "build": "cd frontend && npm run build",
+    "start": "cd backend && npm start",
+    "render-build": "cd backend && npm install && cd ../frontend && npm install && npm run build"
+  }
+}
