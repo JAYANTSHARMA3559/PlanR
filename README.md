@@ -8,16 +8,16 @@ A full-stack task management app with analytics dashboard, built with **React**,
 
 ## Features
 
-- 🔐 JWT Authentication (Signup / Login)
-- ✅ Full Task CRUD — Create, Read, Update, Delete
-- 🏷️ Status: `Todo` / `In Progress` / `Done`
-- 🔥 Priority: `Low` / `Medium` / `High`
-- 🔍 Search, filter by status & priority, sort by created/due date/priority
-- 📖 Pagination (10 tasks per page)
-- 📊 Analytics dashboard — stats cards + Donut & Bar charts
-- 🌙 Dark / Light mode (persisted)
-- 📱 Fully responsive design
-- ✨ Glassmorphism UI with Lucide SVG icons
+- JWT Authentication (Signup / Login)
+- Full Task CRUD — Create, Read, Update, Delete
+- Status tracking: `Todo` / `In Progress` / `Done`
+- Priority levels: `Low` / `Medium` / `High`
+- Search, filter by status & priority, sort by created/due date/priority
+- Pagination (10 tasks per page)
+- Analytics dashboard with stats cards + Donut & Bar charts
+- Dark / Light mode toggle (persisted)
+- Fully responsive design
+- Glassmorphism UI with Lucide SVG icons
 
 ---
 
